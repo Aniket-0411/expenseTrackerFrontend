@@ -1,0 +1,1 @@
+export { OtpModal } from './OTPModal';

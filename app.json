@@ -1,0 +1,80 @@
+{
+  "name": "Expensely",
+  "displayName": "Expensely",
+  "expo": {
+    "name": "Expensely",
+    "slug": "expensely",
+    "owner": "jadoo",
+    "scheme": "expensely-community",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/expenses.png",
+    "splash": {
+      "image": "./assets/images/expenses.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#AB2328"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "jsEngine": "hermes",
+    "assetBundlePatterns": ["**/*"],
+    "android": {
+      "icon": "./assets/images/expenses.png",
+      "package": "com.app.expense.tracker",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/expenses.png",
+        "backgroundImage": "./assets/images/expenses.png"
+      },
+      "splash": {
+        "image": "./assets/images/expenses.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#AB2328"
+      }
+    },
+    "ios": {
+      "icon": "./assets/images/expenses.png",
+      "supportsTablet": true,
+      "bundleIdentifier": "com.app.expense.tracker",
+      "splash": {
+        "image": "./assets/images/expenses.png",
+        "tabletImage": "./assets/images/expenses.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#AB2328"
+      }
+    },
+    "web": {
+      "favicon": "./assets/images/app-icon-web-favicon.png",
+      "splash": {
+        "image": "./assets/images/splash-logo-web.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#AB2328"
+      },
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-localization",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "newArchEnabled": true,
+            "deploymentTarget": "13.4"
+          },
+          "android": {
+            "newArchEnabled": true
+          }
+        }
+      ],
+      "expo-font",
+      "expo-secure-store"
+    ],
+    "experiments": {
+      "tsconfigPaths": true,
+      "typedRoutes": true
+    }
+  },
+  "ignite": {
+    "version": "9.9.0"
+  }
+}

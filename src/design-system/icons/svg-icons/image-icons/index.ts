@@ -1,0 +1,1 @@
+export { LoadingImageIcon } from './LoadingIconImage';

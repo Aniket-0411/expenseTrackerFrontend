@@ -1,0 +1,69 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "globalDependencies": ["**/.env.*", "**/.env"],
+  "pipeline": {
+    "build": {
+      "env": [
+        "APP_ENCRYPTION_SECRET",
+        "APP_STORAGE_ENCRYPTION_SECRET",
+        "EXPO_PUBLIC_PROJECT_ID",
+        "EXPO_PROJECT_ORG",
+        "EXPO_PUBLIC_AZURE_AD_B2C_TENANT_NAME",
+        "EXPO_PUBLIC_AZURE_AD_B2C_CLIENT_ID",
+        "EXPO_PUBLIC_AZURE_AD_B2C_POLICY_NAME",
+        "EXPO_PUBLIC_AZURE_AD_B2C_CLIENT_SECRET",
+        "EXPO_PUBLIC_AZURE_AD_B2C_APP_ID",
+        "EXPO_PUBLIC_SALESFORCE_API_BASE_URL",
+        "INSTANCE",
+        "INSTANCE_NAME",
+        "NEXT_PUBLIC_IS_WEB_APP",
+        "NODE_ENV",
+        "REACT_NATIVE_PACKAGER_HOSTNAME",
+        "EXPO_PUBLIC_INTEGRATION_USERNAME",
+        "EXPO_PUBLIC_INTEGRATION_PASSWORD",
+        "EXPO_PUBLIC_INTEGRATION_CLIENT_ID",
+        "EXPO_PUBLIC_INTEGRATION_CLIENT_SECRET",
+        "EXPO_PUBLIC_INTEGRATION_BASE_URL"
+
+      ],
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**", "public/dist/**"]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "dev": {
+      "env": [
+        "APP_ENCRYPTION_SECRET",
+        "APP_STORAGE_ENCRYPTION_SECRET",
+        "EXPO_PUBLIC_PROJECT_ID",
+        "EXPO_PROJECT_ORG",
+        "EXPO_PUBLIC_AZURE_AD_B2C_TENANT_NAME",
+        "EXPO_PUBLIC_AZURE_AD_B2C_CLIENT_ID",
+        "EXPO_PUBLIC_AZURE_AD_B2C_POLICY_NAME",
+        "EXPO_PUBLIC_SALESFORCE_API_BASE_URL",
+        "INSTANCE",
+        "INSTANCE_NAME",
+        "NEXT_PUBLIC_IS_WEB_APP",
+        "NODE_ENV",
+        "REACT_NATIVE_PACKAGER_HOSTNAME",
+        "REACT_NATIVE_PACKAGER_HOSTNAME",
+        "EXPO_PUBLIC_INTEGRATION_USERNAME",
+        "EXPO_PUBLIC_INTEGRATION_PASSWORD",
+        "EXPPO_PUBLIC_INTEGRATION_CLIENT_ID",
+        "EXPPO_PUBLIC_INTEGRATION_CLIENT_SECRET",
+        "EXPO_PUBLIC_INTEGRATION_BASE_URL"
+      ],
+      "cache": false
+    },
+    "test": {
+      "outputs": []
+    },
+    "android": {
+      "cache": true
+    },
+    "ios": {
+      "cache": true
+    }
+  }
+}

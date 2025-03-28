@@ -31,7 +31,6 @@ android/app/build/
 android/app/client_secret.json
 android/build/
 android/.gradle
-android/gradle/
 android/local.properties
 android/captures/
 android/*.iml

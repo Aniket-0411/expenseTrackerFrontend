@@ -14,30 +14,3 @@ local.properties
 
 # Bundle artifacts
 *.jsbundle
-
-# Firebase config
-google-services.json
-
-# Keystore files
-*.keystore
-*.jks
-
-# Gradle generated files
-captures/
-
-# Android Studio Navigation editor temp files
-.navigation/
-
-# Android Studio captures folder
-captures/
-
-# External native build folder
-.externalNativeBuild/
-
-# Release files
-app/release/
-
-# Generated files
-bin/
-gen/
-out/

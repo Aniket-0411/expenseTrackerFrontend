@@ -28,7 +28,7 @@ const plugins = [
 module.exports = function getBabelConfig(api) {
   api.cache(true);
   return {
-    presets: ['babel-preset-expo'],
+    presets: ['babel-preset-expo', 'module:metro-react-native-babel-preset', "react-native-dotenv", "@babel/preset-typescript"],
     env: {
       production: {},
     },

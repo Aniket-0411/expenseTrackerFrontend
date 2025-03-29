@@ -4,7 +4,7 @@ import {
   GoogleSignin,
   statusCodes,
 } from "@react-native-google-signin/google-signin";
-
+import {IOS_CLIENT_ID, WEB_CLIENT_ID} from "react-native-dotenv";
 import { Screen } from "~/components";
 import { Pressable } from "~/design-system";
 import { Box, OnboardingGradientSVG, Text } from "~/theme";
@@ -29,8 +29,8 @@ export function LoginScreen() {
   useEffect(() => {
     GoogleSignin.configure({
       scopes: ["https://www.googleapis.com/auth/gmail.readonly"],
-      iosClientId: process.env.IOS_CLIENT_ID || '1:846982737577:ios:c58642b08d032e44e6c3b8',
-      webClientId: process.env.WEB_CLIENT_ID || '846982737577-jj5jrfn768mdqb2omjecl6h4f3tmnvif.apps.googleusercontent.com',
+      iosClientId: IOS_CLIENT_ID,
+      webClientId: WEB_CLIENT_ID,
       offlineAccess: true,
       forceCodeForRefreshToken: true,
     });

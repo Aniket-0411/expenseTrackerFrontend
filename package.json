@@ -36,6 +36,7 @@
     "@expo/config": "9.0.3",
     "@expo/metro-runtime": "3.2.1",
     "@expo/vector-icons": "14.0.4",
+    "@lottiefiles/dotlottie-react": "^0.13.2",
     "@react-native-community/datetimepicker": "8.2.0",
     "@react-native-google-signin/google-signin": "^13.2.0",
     "@react-native-picker/picker": "^2.11.0",

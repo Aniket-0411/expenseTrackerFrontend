@@ -14,7 +14,7 @@ interface Expense {
 export const useGetExpensesQuery = (userId: string, month?: string) => {
   console.log("userId", userId, "month", month);
   // Use a fallback value if the environment variable is not defined
-  const baseUrl = `${process.env.EXPO_PUBLIC_BASE || 'http://localhost:3000'}/expenses/${userId}`;
+  const baseUrl = `${process.env['EXPO_PUBLIC_BASE'] || 'http://localhost:3000'}/expenses/${userId}`;
   const url = month ? `${baseUrl}?month=${month}` : baseUrl;
 
   const { data, isLoading, error, refetch } = useQuery<Expense[]>({

@@ -22,13 +22,25 @@ const plugins = [
     },
   ],
   '@babel/plugin-proposal-export-namespace-from',
+  [
+    "module:react-native-dotenv",
+    {
+      "moduleName": "@env",
+      "path": ".env",
+      "blocklist": null,
+      "allowlist": null,
+      "safe": false,
+      "allowUndefined": true,
+      "verbose": false
+    }
+  ],
 ];
 
 /** @type {import('@babel/core').TransformOptions} */
 module.exports = function getBabelConfig(api) {
   api.cache(true);
   return {
-    presets: ['babel-preset-expo', 'module:metro-react-native-babel-preset', "react-native-dotenv", "@babel/preset-typescript"],
+    presets: ['babel-preset-expo'],
     env: {
       production: {},
     },

@@ -4,7 +4,7 @@ import {
   GoogleSignin,
   statusCodes,
 } from "@react-native-google-signin/google-signin";
-import {IOS_CLIENT_ID, WEB_CLIENT_ID} from "react-native-dotenv";
+import {IOS_CLIENT_ID, WEB_CLIENT_ID} from "@env";
 import { Screen } from "~/components";
 import { Pressable } from "~/design-system";
 import { Box, OnboardingGradientSVG, Text } from "~/theme";

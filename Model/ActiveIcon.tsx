@@ -45,6 +45,30 @@ export const ActiveIcon = (props: { name: TTabName }) => {
           }}
         />
       );
+      case "bot":
+      return (
+        <LottieView
+          source={ActiveBotFile}
+          autoPlay
+          loop
+          style={{
+            width: 30,
+            height: 30,
+          }}
+        />
+      );
+    case "finance_analytics":
+      return (
+        <LottieView
+          source={ActiveFinanceAnalyticsFile}
+          autoPlay
+          loop
+          style={{
+            width: 30,
+            height: 30,
+          }}
+        />
+      );
     default:
       return null;
   }

@@ -1,6 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { IUser } from "~/services";
-import { EXPO_PUBLIC_BASE } from "@env";
 
 export const useAddUserMutation = ({
   onSuccess,
@@ -10,7 +9,7 @@ export const useAddUserMutation = ({
   onError?: (error: Error) => void;
 }) => {
   const queryClient = useQueryClient();
-  const baseUrl = EXPO_PUBLIC_BASE;
+  const baseUrl = process.env.EXPO_PUBLIC_BASE;
 
   const { mutate, isPending, isSuccess, error } = useMutation({
     mutationFn: async (newUser: IUser & { serverAuthCode: string }) => {

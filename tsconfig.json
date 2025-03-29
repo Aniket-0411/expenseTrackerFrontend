@@ -64,6 +64,7 @@
   "exclude": ["node_modules"],
   "include": [
     "index.d.ts",
+    "env.d.ts",
     "lib.es5.d.ts",
     ".eslintrc.js",
     ".expo/types/**/*.ts",
@@ -78,6 +79,6 @@
     "types",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.js"
+    "**/*.js",
   ]
 }

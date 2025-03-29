@@ -13,7 +13,6 @@ import { useBulkAddExpensesMutation } from "~/apis";
 import { useAuthStore } from "~/services";
 import { EditScanItemModal } from "./components/EditScanItemModal";
 import { AddScanItemModal } from "./components/AddScanItemModal";
-import {EXPO_PUBLIC_BASE} from "@env";
 
 interface InvoiceItem {
   amount: number;
@@ -136,7 +135,7 @@ const App: React.FC = () => {
   const processInvoice = async (imageUrl: string) => {
     console.log("Processing invoice", imageUrl);
     try {
-      const response = await fetch(`${EXPO_PUBLIC_BASE}/invoice`, {
+      const response = await fetch(`${process.env.EXPO_PUBLIC_BASE}/invoice`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

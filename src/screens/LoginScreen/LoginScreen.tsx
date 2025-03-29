@@ -4,14 +4,12 @@ import {
   GoogleSignin,
   statusCodes,
 } from "@react-native-google-signin/google-signin";
-import {IOS_CLIENT_ID, WEB_CLIENT_ID} from "@env";
 import { Screen } from "~/components";
 import { Pressable } from "~/design-system";
 import { Box, OnboardingGradientSVG, Text } from "~/theme";
 import { useEffect } from "react";
 import { useAuthStore } from "~/services/stores/useAuthStore";
 import { useAddUserMutation } from "~/apis/useAuthMutation";
-
 /**
  * -----------------------------------------------------------------------------
  * Login Screen component rendered at the `(public)/(auth)/login route.
@@ -29,8 +27,8 @@ export function LoginScreen() {
   useEffect(() => {
     GoogleSignin.configure({
       scopes: ["https://www.googleapis.com/auth/gmail.readonly"],
-      iosClientId: IOS_CLIENT_ID,
-      webClientId: WEB_CLIENT_ID,
+      iosClientId: process.env.IOS_CLIENT_ID,
+      webClientId: process.env.WEB_CLIENT_ID,
       offlineAccess: true,
       forceCodeForRefreshToken: true,
     });

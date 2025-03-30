@@ -1,11 +1,3 @@
-import { Box, Text } from "~/theme";
+import { BotScreen } from "~/screens"; // Change import to default export
 
-export default function BotScreen() {
-  return (
-    <Box flex={1} justifyContent="center" alignItems="center">
-      <Text fontFamily="fontPrimarySemiBold" fontSize={20}>
-        Bot Screen
-      </Text>
-    </Box>
-  );
-}
+export default BotScreen;

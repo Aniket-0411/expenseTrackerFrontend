@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { months, MonthSelectionModal, TMonth } from "./MonthSelectModal";
 import { DropdownCTA } from "~/design-system";
-
-const presentMonth = months[new Date().getMonth()].id;
 interface IMonthSelectionDropdownProps {
   selectedMonth: TMonth;
   onMonthChange: (month: TMonth) => void;

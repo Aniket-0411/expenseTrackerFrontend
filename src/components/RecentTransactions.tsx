@@ -4,8 +4,9 @@ import { ScrollView, TouchableOpacity, Alert } from "react-native";
 import { Box, Text } from "~/theme";
 import { NoDataAvailable } from "./NoDataAvailable";
 import { useAuthStore } from "~/services";
-import { useDeleteExpenseMutation } from "~/apis";
+import { useDeleteExpenseMutation, useGetExpensesQuery } from "~/apis";
 import { EditExpenseModal } from "~/screens/HomeScreen/components/EditExpenseModal";
+import { LoadingData } from "~/components/LoadingData";
 
 interface Expense {
   id: string;
@@ -92,6 +93,7 @@ interface RecentTransactionsProps {
   limit?: number;
   showSeeAll?: boolean;
   onSeeAllPress?: () => void;
+  isLoading?: boolean;
 }
 
 export const RecentTransactions: React.FC<RecentTransactionsProps> = ({
@@ -99,9 +101,13 @@ export const RecentTransactions: React.FC<RecentTransactionsProps> = ({
   limit,
   showSeeAll = true,
   onSeeAllPress,
+  isLoading
 }) => {
+  console.log("expenses🛟🛟🛟🛟🛟🛟🛟🛟🛟", expenses);
   const { user } = useAuthStore();
-  const displayExpenses = limit ? expenses.slice(0, limit) : expenses;
+  // const { data: expensesData, isLoading, error, refetch } = useGetExpensesQuery(user?.id || '', undefined, startDate, endDate);
+  const displayExpenses = limit ? (expenses || []).slice(0, limit) : (expenses || []);
+
   const { mutate: deleteExpense } = useDeleteExpenseMutation({
     onSuccess: () => {
       Alert.alert("Success", "Expense deleted successfully");
@@ -167,12 +173,13 @@ export const RecentTransactions: React.FC<RecentTransactionsProps> = ({
       <ScrollView>
         <Box
           flex={1}
-          borderTopLeftRadius="m"
-          borderTopRightRadius="m"
+          borderRadius="m"
         >
           <Box width="100%" height="100%">
-            {displayExpenses.length > 0 ? (
-              displayExpenses.map((expense) => {
+            {isLoading ? (
+              <LoadingData />
+            ) : displayExpenses.length > 0 ? (
+               expenses.map((expense) => {
                 return (
                   <Transaction
                     key={expense.id}

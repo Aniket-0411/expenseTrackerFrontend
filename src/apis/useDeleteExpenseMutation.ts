@@ -1,6 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-
 export interface DeleteExpenseParams {
   id: string;
   userId: string;

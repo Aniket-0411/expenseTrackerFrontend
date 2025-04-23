@@ -16,6 +16,7 @@ import { QuickActionsGroup } from "./components/QuickActionsGroup";
 import { useAuthStore } from "~/services";
 import { useGetExpensesQuery } from "~/apis";
 import { TMonth } from "./components/MonthSelectModal";
+import { DateRangePicker } from "~/components/DateRangePicker";
 
 /**
  * -----------------------------------------------------------------------------
@@ -24,12 +25,39 @@ import { TMonth } from "./components/MonthSelectModal";
 export function HomeScreen() {
   const [isExpenseAmountModalVisible, setExpenseAmountModalVisible] =
     useState(false);
-  const [selectedMonth, setSelectedMonth] = useState<TMonth>("March");
+  const today = new Date();
+  const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+  const lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+  
+  const [startDate, setStartDate] = useState<Date>(firstDayOfMonth);
+  const [endDate, setEndDate] = useState<Date>(lastDayOfMonth);
+  
+  const [isDateRangePickerVisible, setDateRangePickerVisible] = useState(false);
   const { user } = useAuthStore();
-  const { data: expenses, refetch, isLoading } = useGetExpensesQuery(
-    user?.id || "",
-    selectedMonth
-  );
+  const {
+    data: expenses,
+    refetch,
+    isLoading,
+  } = useGetExpensesQuery(user?.id || "", startDate, endDate);
+
+  const onDateChange = (date, type) => {
+    if (type === "END_DATE") {
+      setEndDate(date);
+    } else {
+      setStartDate(date);
+      setEndDate(null);
+    }
+    refetch();
+  };
+
+  const handleConfirm = () => {
+    setDateRangePickerVisible(false);
+    refetch();
+    console.log('Selected date range:', {
+      startDate: startDate,
+      endDate: endDate,
+    });
+  };
 
   const totalExp = expenses?.reduce((acc, curr) => acc + curr.amount, 0);
   console.log("totalExp🥥🥥🥥🥥🥥🥥🥥", totalExp);
@@ -60,8 +88,7 @@ export function HomeScreen() {
           <Box
             alignItems="center"
             flexDirection="row"
-            gap="m"
-            justifyContent="space-between"
+            gap="s"
           >
             <Box
               alignItems="center"
@@ -97,14 +124,22 @@ export function HomeScreen() {
                 </Text>
               </Box>
             </Box>
-            <Box width="19%">
-              <MonthSelectionDropdown
-                selectedMonth={selectedMonth}
-                onMonthChange={(month: TMonth) => {
-                  setSelectedMonth(month);
-                  // Refetch expenses when month changes
-                  refetch();
+            <Box>
+              <DateRangePicker
+                selectedStartDate={startDate}
+                selectedEndDate={endDate}
+                onDateChange={onDateChange}
+                onConfirm={handleConfirm}
+                isVisible={isDateRangePickerVisible}
+                onCancel={() => setDateRangePickerVisible(false)}
+                onClear={() => {
+                  setStartDate(null);
+                  setEndDate(null);
                 }}
+                onToggle={() => setDateRangePickerVisible(!isDateRangePickerVisible)}
+                isLoading={isLoading}
+                isEnabled={!isLoading}
+                onClose={() => setDateRangePickerVisible(false)}
               />
             </Box>
           </Box>
@@ -135,7 +170,10 @@ export function HomeScreen() {
             >
               $
             </Text>{" "}
-            {expenses?.reduce((acc, curr) => acc + curr.amount, 0).toString().slice(0, 8) || 0}
+            {expenses
+              ?.reduce((acc, curr) => acc + curr.amount, 0)
+              .toString()
+              .slice(0, 8) || 0}
           </Text>
 
           <ActionCapsuleButton
@@ -150,7 +188,6 @@ export function HomeScreen() {
       </Box>
 
       {isLoading && <LoadingData />}
-
 
       <RecentTransactions
         expenses={expenses || []}

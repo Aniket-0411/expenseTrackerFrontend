@@ -12,8 +12,8 @@ interface ICalendarIconProps {
  * A calendar icon.
  */
 export function CalendarIcon({
-  width = 20,
-  height = 20,
+  width = 16,
+  height = 16,
   fill = '#B61D22',
   stroke = '#B61D22',
 }: ICalendarIconProps) {

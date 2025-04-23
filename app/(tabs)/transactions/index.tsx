@@ -5,10 +5,15 @@ import { RecentTransactions } from '~/components';
 import { useAuthStore } from '~/services';
 import { useGetExpensesQuery } from '~/apis';
 import { DateRangePicker } from '~/components/DateRangePicker';
+import { fi } from 'date-fns/locale';
 
 export default function TransactionsScreen() {
-  const [startDate, setStartDate] = useState<Date | null>(null);
-  const [endDate, setEndDate] = useState<Date | null>(null);
+
+  const today = new Date();
+  const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+  const lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+  const [startDate, setStartDate] = useState<Date>(firstDayOfMonth);
+  const [endDate, setEndDate] = useState<Date>(lastDayOfMonth);
   const [isDateRangePickerVisible, setDateRangePickerVisible] = useState(false);
   const { user } = useAuthStore();
   const { data: expenses, refetch, isLoading } = useGetExpensesQuery(user?.id || '', startDate, endDate);

@@ -124,6 +124,7 @@ const App: React.FC = () => {
 
   const handleRequestCameraPermission = async () => {
     try {
+      console.log("asking camera permission");
       const permission = await Camera.requestCameraPermission();
 
       return permission;

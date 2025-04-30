@@ -59,7 +59,10 @@ export function HomeScreen() {
     });
   };
 
-  const totalExp = expenses?.reduce((acc, curr) => acc + curr.amount, 0);
+  const totalExp = Array.isArray(expenses)
+  ? expenses.reduce((acc, curr) => acc + curr.amount, 0)
+  : 0;
+
   console.log("totalExp🥥🥥🥥🥥🥥🥥🥥", totalExp);
   return (
     <Box flex={1} bg="rankBorder" mx="none" p="none">
@@ -170,10 +173,11 @@ export function HomeScreen() {
             >
               $
             </Text>{" "}
-            {expenses
-              ?.reduce((acc, curr) => acc + curr.amount, 0)
-              .toString()
-              .slice(0, 8) || 0}
+            {Array.isArray(expenses)
+            ? expenses.reduce((acc, curr) => acc + curr.amount, 0).toString().slice(0, 8)
+            : "0"
+            }
+
           </Text>
 
           <ActionCapsuleButton

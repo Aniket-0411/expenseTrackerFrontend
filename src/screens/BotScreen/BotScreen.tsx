@@ -27,8 +27,8 @@ export function BotScreen() {
   const [clearModalVisible, setClearModalVisible] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<any>(null);
   const scrollViewRef = useRef<ScrollView>(null);
-  const djangoUrl = process.env.EXPO_PUBLIC_DJANGO_BACKEND + ':8000';
-  const flaskUrl = process.env.EXPO_PUBLIC_FLASK_BACKEND + ':5000';
+  const djangoUrl = process.env.EXPO_PUBLIC_DJANGO_BACKEND;
+  const flaskUrl = process.env.EXPO_PUBLIC_FLASK_BACKEND;
 
   function storeMessage(message: string, sender: string) {
     console.log("Storing message:", message, sender); // Debug message and sender
@@ -162,13 +162,13 @@ export function BotScreen() {
     })
     .then(response => response.json())
     .then(result => {
-      console.log('Image upload response:', result.data);
+      console.log('Image upload response:', result.responses);
       setSelectedImage(null); // Clear selected image after upload
-      result.data.forEach((resp: any) => {
+      result.responses.forEach((resp: any) => {
         if (resp.text) {
-          const botMessage: Message = { text: resp.text, sender: resp.sender };
+          const botMessage: Message = { text: resp.text, sender: 'bot' };
           setMessages(prevMessages => [...prevMessages, botMessage]);
-          storeMessage(resp.text, resp.sender);
+          storeMessage(resp.text, 'bot');
         }
       });
       setLoading(false); // Hide loading indicator

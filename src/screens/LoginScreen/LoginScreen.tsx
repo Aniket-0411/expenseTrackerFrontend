@@ -27,8 +27,8 @@ export function LoginScreen() {
   useEffect(() => {
     GoogleSignin.configure({
       scopes: ["https://www.googleapis.com/auth/gmail.readonly"],
-      iosClientId: process.env.IOS_CLIENT_ID,
-      webClientId: process.env.WEB_CLIENT_ID,
+      iosClientId: process.env.EXPO_PUBLIC_IOS_CLIENT_ID,
+      webClientId: process.env.EXPO_PUBLIC_WEB_CLIENT_ID,
       offlineAccess: true,
       forceCodeForRefreshToken: true,
     });

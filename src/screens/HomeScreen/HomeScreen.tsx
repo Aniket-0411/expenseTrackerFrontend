@@ -194,13 +194,12 @@ export function HomeScreen() {
       {isLoading && <LoadingData />}
 
       <RecentTransactions
-        expenses={expenses || []}
-        limit={5}
-        onSeeAllPress={() => {
-          // Navigate to the transactions screen
-          router.push("/(tabs)/transactions");
-        }}
-      />
+  expenses={Array.isArray(expenses) ? expenses : []}
+  limit={5}
+  onSeeAllPress={() => {
+    router.push("/(tabs)/transactions");
+  }}
+/>
       <ExpenseModal
         onCloseModal={() => setExpenseAmountModalVisible(false)}
         isVisible={isExpenseAmountModalVisible}

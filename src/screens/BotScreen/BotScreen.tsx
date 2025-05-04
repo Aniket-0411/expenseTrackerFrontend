@@ -162,13 +162,13 @@ export function BotScreen() {
     })
     .then(response => response.json())
     .then(result => {
-      console.log('Image upload response:', result.data);
+      console.log('Image upload response:', result.responses);
       setSelectedImage(null); // Clear selected image after upload
-      result.data.forEach((resp: any) => {
+      result.responses.forEach((resp: any) => {
         if (resp.text) {
-          const botMessage: Message = { text: resp.text, sender: resp.sender };
+          const botMessage: Message = { text: resp.text, sender: 'bot' };
           setMessages(prevMessages => [...prevMessages, botMessage]);
-          storeMessage(resp.text, resp.sender);
+          storeMessage(resp.text, 'bot');
         }
       });
       setLoading(false); // Hide loading indicator

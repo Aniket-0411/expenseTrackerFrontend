@@ -204,7 +204,7 @@ export const DonutChartContainer = () => {
         </Text>
         {data.length === 0 && <NoDataAvailable />}
         {data.map((item, index) => {
-          return <RenderItem item={item} key={index} index={index} allExpenses={allExpenses || []} />;
+          return <RenderItem item={item} key={index} index={index} allExpenses={Array.isArray(allExpenses) ? allExpenses : []} />;
         })}
       </ScrollView>
     </>

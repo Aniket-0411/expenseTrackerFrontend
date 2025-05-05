@@ -1,3 +1,6 @@
+import { LogBox } from "react-native";
+LogBox.ignoreAllLogs();
+
 import React, { useState } from "react";
 import { View, Image, TouchableOpacity, StyleSheet } from "react-native";
 

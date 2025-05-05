@@ -27,8 +27,8 @@ export function BotScreen() {
   const [clearModalVisible, setClearModalVisible] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<any>(null);
   const scrollViewRef = useRef<ScrollView>(null);
-  const djangoUrl = process.env.EXPO_PUBLIC_DJANGO_BACKEND + ':8000';
-  const flaskUrl = process.env.EXPO_PUBLIC_FLASK_BACKEND + ':5000';
+  const djangoUrl = process.env.EXPO_PUBLIC_DJANGO_BACKEND;
+  const flaskUrl = process.env.EXPO_PUBLIC_FLASK_BACKEND;
 
   function storeMessage(message: string, sender: string) {
     console.log("Storing message:", message, sender); // Debug message and sender

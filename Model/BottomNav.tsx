@@ -24,9 +24,6 @@ const BottomNav = () => {
     } else if (iconName === "bot") {
       setSelectedIcon("bot");
       router.navigate("/bot");
-    } else if (iconName === "finance_analytics") {
-      setSelectedIcon("finance_analytics");
-      router.navigate("/finance_analytics");
     }
   };
 
@@ -57,10 +54,6 @@ const BottomNav = () => {
 
       <TouchableOpacity onPress={() => handleIconPress("bot")}>
         <TabIcon focused={selectedIcon === "bot"} tab="bot" />
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => handleIconPress("finance_analytics")}>
-        <TabIcon focused={selectedIcon === "finance_analytics"} tab="finance_analytics" />
       </TouchableOpacity>
     </Box>
   );
